@@ -1,6 +1,3 @@
-input.onButtonPressed(Button.A, function () {
-	
-})
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "forward") {
         robotbit.MotorRunDual(
@@ -53,40 +50,6 @@ radio.onReceivedString(function (receivedString) {
     }
     robotbit.MotorStopAll()
 })
-let b_ij = 0
 let strip: neopixel.Strip = null
 radio.setGroup(255)
 strip = neopixel.create(DigitalPin.P16, 24, NeoPixelMode.RGB)
-basic.forever(function () {
-    b_ij = sonar.ping(
-    DigitalPin.P14,
-    DigitalPin.P15,
-    PingUnit.Centimeters
-    )
-    basic.showString("" + (b_ij))
-    if (20 < b_ij) {
-        music.playMelody("C5 B A G F E D C ", 120)
-    } else {
-        basic.showLeds(`
-            . . . . .
-            . # . # .
-            . . . . .
-            # . . . #
-            . # # # .
-            `)
-        basic.showLeds(`
-            # . . . #
-            . . # . .
-            . . . . .
-            . # # # .
-            # . . . #
-            `)
-        basic.showLeds(`
-            # # # # #
-            . . # . .
-            . . . . .
-            . # # # .
-            # . . . #
-            `)
-    }
-})
